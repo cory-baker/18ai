@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <span>{{ title() }}</span>
+</mat-toolbar>
+
+<main class="page">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Slice 1 — toolchain wired</mat-card-title>
+      <mat-card-subtitle>engine + frontend + Material</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>&#64;18ai/engine version:</strong> {{ engineVersion }}</p>
+      <p><strong>placeholder says:</strong> {{ engineMessage }}</p>
+      <p>
+        See <code>docs/architecture.md</code> for the build order. Game logic
+        lands in slice 2 onward.
+      </p>
+    </mat-card-content>
+  </mat-card>
+
+  <router-outlet />
+</main>

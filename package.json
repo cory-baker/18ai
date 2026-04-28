@@ -1,0 +1,17 @@
+{
+  "name": "18ai",
+  "version": "0.0.0",
+  "private": true,
+  "description": "18Chesapeake — TypeScript engine + Angular frontend monorepo. See docs/architecture.md.",
+  "workspaces": [
+    "engine",
+    "frontend"
+  ],
+  "scripts": {
+    "test": "npm test -w engine",
+    "start": "npm start -w frontend"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
