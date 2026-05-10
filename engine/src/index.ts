@@ -12,17 +12,20 @@ export function enginePlaceholder(): EnginePlaceholder {
   };
 }
 
-export type { AxialHex, EdgeId } from './coords/index.js';
-export {
-  EDGE_NAMES,
-  Edge,
-  areMutualNeighbors,
-  areNeighbors,
-  edgeBetween,
-  edgeName,
-  hexDistance,
-  neighborOf,
-  oppositeEdge,
-  parseEdge,
-  rotateEdge,
-} from './coords/index.js';
+export type { AxialHex, EdgeId } from './coords/types.js';
+export { EDGE_NAMES, Edge, edgeName, oppositeEdge, parseEdge, rotateEdge } from './coords/edges.js';
+export { areMutualNeighbors, areNeighbors, edgeBetween, hexDistance, neighborOf } from './coords/axial.js';
+export { HexId } from './coords/hex-id.js';
+export type {
+  HexSlot,
+  HexSlotBase,
+  OpenHexSlot,
+  CityHexSlot,
+  TownHexSlot,
+  OffboardHexSlot,
+  StaticTrackHexSlot,
+  Path,
+  PathEnd,
+  CityStop,
+} from './data/map-types.js';
+export type { CompanyId } from './data/company-id.js';
