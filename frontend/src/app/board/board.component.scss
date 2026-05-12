@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+.board-svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.hex-id {
+  font-size: 14px;
+  fill: #000;
+  pointer-events: none;
+}

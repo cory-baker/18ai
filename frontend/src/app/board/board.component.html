@@ -1,0 +1,11 @@
+<svg class="board-svg" xmlns="http://www.w3.org/2000/svg" [attr.viewBox]="viewBox" preserveAspectRatio="xMidYMid meet">
+  @for (h of hexes; track h.id) {
+    <g
+      class="hex-cell"
+      [attr.transform]="'translate(' + hexToPixel(h.q, h.r).x + ',' + hexToPixel(h.q, h.r).y + ')'"
+    >
+      <polygon [attr.points]="polyPoints" [attr.fill]="fillFor(h)" stroke="black" stroke-width="1" />
+      <text class="hex-id" text-anchor="middle" x="0" y="-70">{{ h.id }}</text>
+    </g>
+  }
+</svg>

@@ -1,12 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import { App } from './app';
+import { routes } from './app.routes';
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideNoopAnimations()],
+      providers: [provideNoopAnimations(), provideRouter(routes)],
     }).compileComponents();
   });
 
