@@ -18,6 +18,7 @@ export { areMutualNeighbors, areNeighbors, edgeBetween, hexDistance, neighborOf 
 export { HexId } from './coords/hex-id.js';
 export type {
   HexSlot,
+  HexSlotWithoutCoords,
   HexSlotBase,
   OpenHexSlot,
   CityHexSlot,
@@ -29,3 +30,4 @@ export type {
   CityStop,
 } from './data/map-types.js';
 export type { CompanyId } from './data/company-id.js';
+export { Map } from './data/map.js';

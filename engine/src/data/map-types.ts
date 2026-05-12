@@ -44,6 +44,9 @@ export type HexSlot =
   | OffboardHexSlot
   | StaticTrackHexSlot;
 
+/** Map manifest row: same as `HexSlot` but axial coords are filled at load from `id`. */
+export type HexSlotWithoutCoords = HexSlot extends infer H ? (H extends HexSlot ? Omit<H, 'q' | 'r'> : never) : never;
+
 export interface CityStop {
   id: number;
   kind: 'city' | 'town';
