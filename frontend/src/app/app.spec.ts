@@ -23,6 +23,6 @@ describe('App', () => {
     fixture.detectChanges();
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.textContent).toContain('@18ai/engine wired up');
+    expect(compiled.textContent ?? '').toContain('@18ai/engine wired up');
   });
 });

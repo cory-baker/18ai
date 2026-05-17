@@ -1,7 +1,6 @@
-// Custom Material theme. Per docs/architecture.md §10.1, this will eventually
-// carry a period-appropriate palette (rich greens, browns, brass — not the
-// default M3 violet/azure). For slice 1 we just adopt Material's default
-// palette so the toolchain wiring is verifiable end-to-end.
+// Custom Material theme. Later this can switch to a period-appropriate palette
+// (rich greens, browns, brass — not the default M3 violet/azure). For slice 1
+// we use Material defaults so the toolchain wiring is verifiable end-to-end.
 
 @use '@angular/material' as mat;
 
