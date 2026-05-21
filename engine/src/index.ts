@@ -31,3 +31,5 @@ export type {
 } from './data/map-types.js';
 export type { CompanyId } from './data/company-id.js';
 export { Map } from './data/map.js';
+export type { TileDef, TileColor } from './data/tile-types.js';
+export { Tiles } from './data/tiles.js';

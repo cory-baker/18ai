@@ -54,9 +54,10 @@ export interface CityStop {
   revenue: number;
 }
 
+/** Track segment between two endpoints; `from`/`to` order is not semantically significant. */
 export interface Path {
-  a: PathEnd;
-  b: PathEnd;
+  from: PathEnd;
+  to: PathEnd;
 }
 
 export type PathEnd =

@@ -255,8 +255,8 @@ interface CityStop {
 }
 
 interface Path {
-  a: PathEnd;
-  b: PathEnd;
+  from: PathEnd;
+  to: PathEnd;
 }
 type PathEnd =
   | { kind: 'edge'; edge: EdgeId }
