@@ -20,6 +20,7 @@ export default tseslint.config(
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
     },
+    'func-style': ['error', 'expression', { overrides: { namedExports: 'declaration' } }],
   },
   prettier,
 );
