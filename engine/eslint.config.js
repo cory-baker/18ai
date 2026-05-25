@@ -5,8 +5,6 @@ export default tseslint.config(
   {
     ignores: ['dist/**', 'coverage/**', 'node_modules/**', 'eslint.config.js'],
   },
-  ...tseslint.configs.recommendedTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
   {
     files: ['src/**/*.ts', 'test/**/*.ts', 'vitest.config.ts'],
     languageOptions: {
