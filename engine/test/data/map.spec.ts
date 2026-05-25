@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import type { CityHexSlot, OffboardHexSlot } from '../src/data/map-types.js';
-import { HexId, Map as ChesapeakeMap } from '../src/index.js';
+import type { CityHexSlot, OffboardHexSlot } from '../../src/data/map-types.js';
+import { HexId, Map as ChesapeakeMap } from '../../src/index.js';
 
 describe('data/map manifest', () => {
   it('has one entry per Chesapeake board hex from 18xx map.rb (63 total)', () => {

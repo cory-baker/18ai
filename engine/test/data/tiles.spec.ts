@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { Tiles } from '../src/data/tiles.js';
+import { Tiles } from '../../src/data/tiles.js';
 
 describe('data/tiles catalog', () => {
   it('exposes yellow tile 9 with unlimited quantity', () => {

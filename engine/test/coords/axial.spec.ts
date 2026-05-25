@@ -6,7 +6,7 @@ import {
   edgeBetween,
   hexDistance,
   neighborOf,
-} from '../src/index.js';
+} from '../../src/index.js';
 
 describe('coords/axial', () => {
   it('computes flat-top neighbors for each edge', () => {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { EDGE_NAMES, Edge, edgeName, oppositeEdge, parseEdge, rotateEdge } from '../src/index.js';
+import { EDGE_NAMES, Edge, edgeName, oppositeEdge, parseEdge, rotateEdge } from '../../src/index.js';
 
 describe('coords/edges', () => {
   const EDGE_IDS = [0, 1, 2, 3, 4, 5] as const;

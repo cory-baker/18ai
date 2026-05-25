@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { Edge, HexId, edgeBetween, neighborOf } from '../src/index.js';
+import { Edge, HexId, edgeBetween, neighborOf } from '../../src/index.js';
 
 describe('coords/hex-id atomic helpers', () => {
   it('extracts column and row parts from a hex id', () => {
