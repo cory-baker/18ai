@@ -15,7 +15,15 @@ export function enginePlaceholder(): EnginePlaceholder {
 export type { AxialHex, EdgeId } from './coords/types.js';
 export { EDGE_NAMES, Edge, edgeName, oppositeEdge, parseEdge, rotateEdge } from './coords/edges.js';
 export { areMutualNeighbors, areNeighbors, edgeBetween, hexDistance, neighborOf } from './coords/axial.js';
-export { HexId } from './coords/hex-id.js';
+export {
+  getAxialFromHexId,
+  getColIdFromColIdx,
+  getColIdxFromColId,
+  getHexIdFromAxial,
+  getPartsFromHexId,
+  getRowIdFromRowIdx,
+  getRowIdxFromRowId,
+} from './coords/hex-id.js';
 export type {
   HexSlot,
   HexSlotWithoutCoords,

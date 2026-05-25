@@ -13,18 +13,23 @@ export const EDGE_NAMES = ['N', 'NE', 'SE', 'S', 'SW', 'NW'] as const;
 
 type EdgeName = (typeof EDGE_NAMES)[number];
 
-export const edgeName = (edge: EdgeId): EdgeName => EDGE_NAMES[edge];
+export function edgeName(edge: EdgeId): EdgeName {
+  return EDGE_NAMES[edge];
+}
 
-export const parseEdge = (name: EdgeName): EdgeId => {
+export function parseEdge(name: EdgeName): EdgeId {
   const edge = EDGE_NAMES.indexOf(name);
   if (edge < 0) {
     throw new Error(`Unknown edge name: ${name}`);
   }
 
   return edge as EdgeId;
-};
+}
 
-export const rotateEdge = (edge: EdgeId, rotations: number): EdgeId =>
-  ((((edge + rotations) % 6) + 6) % 6) as EdgeId;
+export function rotateEdge(edge: EdgeId, rotations: number): EdgeId {
+  return ((((edge + rotations) % 6) + 6) % 6) as EdgeId;
+}
 
-export const oppositeEdge = (edge: EdgeId): EdgeId => ((edge + 3) % 6) as EdgeId;
+export function oppositeEdge(edge: EdgeId): EdgeId {
+  return ((edge + 3) % 6) as EdgeId;
+}

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { CityHexSlot, OffboardHexSlot } from '../../src/data/map-types.js';
-import { HexId, Map as ChesapeakeMap } from '../../src/index.js';
+import { getAxialFromHexId, getHexIdFromAxial, Map as ChesapeakeMap } from '../../src/index.js';
 
 describe('data/map manifest', () => {
   it('has one entry per Chesapeake board hex from 18xx map.rb (63 total)', () => {
@@ -9,7 +9,7 @@ describe('data/map manifest', () => {
 
   it('round-trips every board-style hex id through axial coords', () => {
     for (const h of ChesapeakeMap.map) {
-      expect(HexId.getHexIdFromAxial(HexId.getAxialFromHexId(h.id))).toBe(h.id);
+      expect(getHexIdFromAxial(getAxialFromHexId(h.id))).toBe(h.id);
     }
   });
 
