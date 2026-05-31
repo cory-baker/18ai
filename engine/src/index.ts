@@ -11,10 +11,27 @@ export function enginePlaceholder(): EnginePlaceholder {
     message: '@18ai/engine wired up — slice 1 toolchain verified.',
   };
 }
-
+export {
+  EDGE_MIDPOINTS,
+  HEX_HEIGHT,
+  HEX_RADIUS,
+  POLY_POINTS,
+  cityCenter,
+  edgeMidpoint,
+  hexToPixel,
+  resolvePathEnd,
+  segmentForPath,
+} from './render/hex-layout.js';
+export type { PixelPoint, Segment } from './render/hex-layout.js';
 export type { AxialHex, EdgeId } from './coords/types.js';
 export { EDGE_NAMES, Edge, edgeName, oppositeEdge, parseEdge, rotateEdge } from './coords/edges.js';
-export { areMutualNeighbors, areNeighbors, edgeBetween, hexDistance, neighborOf } from './coords/axial.js';
+export {
+  areMutualNeighbors,
+  areNeighbors,
+  edgeBetween,
+  hexDistance,
+  neighborOf,
+} from './coords/axial.js';
 export {
   getAxialFromHexId,
   getColIdFromColIdx,
