@@ -1,12 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import {
-  Edge,
-  areMutualNeighbors,
-  areNeighbors,
-  edgeBetween,
-  hexDistance,
-  neighborOf,
-} from '../../src/index.js';
+import { Edge, areMutualNeighbors, areNeighbors, edgeBetween, hexDistance, neighborOf } from '../../src/index.js';
 
 describe('coords/axial', () => {
   it('computes flat-top neighbors for each edge', () => {

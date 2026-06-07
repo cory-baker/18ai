@@ -1,10 +1,11 @@
 import tseslint from 'typescript-eslint';
-import prettier from 'eslint-config-prettier';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
 export default tseslint.config(
   {
     ignores: ['dist/**', 'coverage/**', 'node_modules/**', 'eslint.config.js'],
   },
+  ...tseslint.configs.recommended,
   {
     files: ['src/**/*.ts', 'test/**/*.ts', 'vitest.config.ts'],
     languageOptions: {
@@ -19,8 +20,8 @@ export default tseslint.config(
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
+      'func-style': ['error', 'expression', { overrides: { namedExports: 'declaration' } }],
     },
-    'func-style': ['error', 'expression', { overrides: { namedExports: 'declaration' } }],
   },
-  prettier,
+  eslintConfigPrettier,
 );

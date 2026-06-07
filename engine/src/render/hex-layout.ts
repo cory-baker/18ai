@@ -1,5 +1,5 @@
 import type { AxialHex, EdgeId } from '../coords/types.js';
-import type { CityStop, Path, PathEnd } from '../data/map-types.js';
+import type { CityStop, Path, PathEnd } from '../types/map-types.js';
 
 export const HEX_RADIUS = 100;
 export const HEX_HEIGHT = HEX_RADIUS * Math.sqrt(3); // https://www.redblobgames.com/grids/hexagons/#spacing

@@ -1,4 +1,4 @@
-import type { HexSlotWithoutCoords } from './map-types.js';
+import type { HexSlotWithoutCoords } from '../types/map-types.js';
 
 /** Source: `tobymao/18xx` `lib/engine/game/g_18_chesapeake/map.rb` (one row per hex). */
 export const MAP_MANIFEST_SEED: readonly HexSlotWithoutCoords[] = [

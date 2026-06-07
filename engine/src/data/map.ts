@@ -1,5 +1,5 @@
 import { getAxialFromHexId } from '../coords/hex-id.js';
-import type { HexSlot, HexSlotWithoutCoords } from './map-types.js';
+import type { HexSlot, HexSlotWithoutCoords } from '../types/map-types.js';
 import { MAP_MANIFEST_SEED } from './map-manifest-seed.js';
 
 /** Chesapeake board manifest: hex slots with axial coords derived from each `id`. */

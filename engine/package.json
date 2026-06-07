@@ -17,7 +17,9 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" vitest.config.ts",
+    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\" vitest.config.ts",
+    "check": "npm run lint && npm run format:check"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

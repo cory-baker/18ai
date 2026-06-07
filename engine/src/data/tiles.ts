@@ -1,4 +1,4 @@
-import type { TileDef } from './tile-types.js';
+import type { TileDef } from '../types/tile-types.js';
 import { TILE_CATALOG_SEED } from './tile-catalog-seed.js';
 
 export class Tiles {

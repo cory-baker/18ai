@@ -1,6 +1,8 @@
-import type { CityStop, Path } from './map-types.js';
+import type { CityStop, Path } from '../types/map-types.js';
 
 export type TileColor = 'yellow' | 'green' | 'brown' | 'gray';
+
+export type Rotation = 0 | 1 | 2 | 3 | 4 | 5;
 
 export interface TileDef {
   id: string;

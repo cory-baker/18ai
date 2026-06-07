@@ -37,12 +37,7 @@ export interface StaticTrackHexSlot extends HexSlotBase {
   paths: Path[];
 }
 
-export type HexSlot =
-  | OpenHexSlot
-  | CityHexSlot
-  | TownHexSlot
-  | OffboardHexSlot
-  | StaticTrackHexSlot;
+export type HexSlot = OpenHexSlot | CityHexSlot | TownHexSlot | OffboardHexSlot | StaticTrackHexSlot;
 
 /** Map manifest row: same as `HexSlot` but axial coords are filled at load from `id`. */
 export type HexSlotWithoutCoords = HexSlot extends infer H ? (H extends HexSlot ? Omit<H, 'q' | 'r'> : never) : never;
@@ -60,6 +55,4 @@ export interface Path {
   to: PathEnd;
 }
 
-export type PathEnd =
-  | { kind: 'edge'; edge: EdgeId }
-  | { kind: 'stop'; stopId: number };
+export type PathEnd = { kind: 'edge'; edge: EdgeId } | { kind: 'stop'; stopId: number };

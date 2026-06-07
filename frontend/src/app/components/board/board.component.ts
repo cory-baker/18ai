@@ -50,8 +50,7 @@ export class Board {
       case 'static_track':
         return '#CCCEC2';
       default: {
-        const _x: never = h;
-        return _x;
+        return h;
       }
     }
   }

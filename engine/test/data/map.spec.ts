@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { CityHexSlot, OffboardHexSlot } from '../../src/data/map-types.js';
+import type { CityHexSlot, OffboardHexSlot } from '../../src/types/map-types.js';
 import { getAxialFromHexId, getHexIdFromAxial, Map as ChesapeakeMap } from '../../src/index.js';
 
 describe('data/map manifest', () => {
@@ -35,9 +35,7 @@ describe('data/map manifest', () => {
   });
 
   it('gives Pittsburgh (B-2) yellow-phase revenue 40', () => {
-    const pit = ChesapeakeMap.map.find(
-      (h): h is OffboardHexSlot => h.id === 'B-2' && h.kind === 'offboard',
-    );
+    const pit = ChesapeakeMap.map.find((h): h is OffboardHexSlot => h.id === 'B-2' && h.kind === 'offboard');
     expect(pit).toBeDefined();
     if (!pit) {
       throw new Error('expected B-2 offboard hex');
