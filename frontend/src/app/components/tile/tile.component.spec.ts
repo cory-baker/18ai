@@ -17,4 +17,9 @@ describe('TileComponent', () => {
   it('should create', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
+
+  it('render two <line> elements for a single-path tile (black line/white outline)', () => {
+    const lines = fixture.nativeElement.querySelectorAll('line')
+    expect(lines.length).toBe(2)
+  })
 });
