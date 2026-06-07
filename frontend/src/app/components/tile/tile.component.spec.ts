@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { TileComponent } from './tile.component';
-import { TILE_CATALOG_SEED } from '../../../../../engine/src/data/tile-catalog-seed';
+import { Tiles } from '@18ai/engine';
 
 describe('TileComponent', () => {
   let fixture: ComponentFixture<TileComponent>;
@@ -12,7 +12,7 @@ describe('TileComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(TileComponent);
-    fixture.componentInstance.tile = TILE_CATALOG_SEED.find((t) => t.id === '9');
+    fixture.componentInstance.tile = Tiles.byId('9');
     fixture.detectChanges();
   });
 
