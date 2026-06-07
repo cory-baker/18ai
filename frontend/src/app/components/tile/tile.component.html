@@ -1,0 +1,22 @@
+<svg [attr.transform]="'rotate(' + rotation * 60 + ')'">
+  <ng-container *ngFor="let seg of segments; let i = index">
+    <line
+      [attr.x1]="seg.x1"
+      [attr.y1]="seg.y1"
+      [attr.x2]="seg.x2"
+      [attr.y2]="seg.y2"
+      stroke="white"
+      stroke-width="12"
+      stroke-linecap="round"
+    ></line>
+    <line
+      [attr.x1]="seg.x1"
+      [attr.y1]="seg.y1"
+      [attr.x2]="seg.x2"
+      [attr.y2]="seg.y2"
+      stroke="black"
+      stroke-width="9"
+      stroke-linecap="round"
+    ></line>
+  </ng-container>
+</svg>

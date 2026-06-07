@@ -7,6 +7,12 @@ const eslintConfigPrettier = require('eslint-config-prettier/flat');
 module.exports = defineConfig([
   {
     files: ['**/*.ts'],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: __dirname,
+      },
+    },
     extends: [tseslint.configs.recommended, angular.configs.tsRecommended],
     processor: angular.processInlineTemplates,
     rules: {
@@ -30,7 +36,7 @@ module.exports = defineConfig([
   },
   {
     files: ['**/*.html'],
-    extends: [angular.configs.templateRecommended, angular.configs.templateAccessibility],
+    extends: [angular.configs.templateAccessibility],
     rules: {},
   },
   eslintConfigPrettier,
