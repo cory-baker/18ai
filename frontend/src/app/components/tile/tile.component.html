@@ -1,4 +1,4 @@
-<svg [attr.transform]="'rotate(' + rotation * 60 + ')'">
+<svg:g [attr.transform]="'rotate(' + rotation * 60 + ')'">
   <ng-container *ngFor="let seg of segments; let i = index">
     <line
       [attr.x1]="seg.x1"
@@ -19,4 +19,4 @@
       stroke-linecap="round"
     ></line>
   </ng-container>
-</svg>
+</svg:g>
