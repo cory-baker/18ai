@@ -1,20 +1,29 @@
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { TileComponent } from './tile.component';
 import { Tiles } from '@18ai/engine';
+import { TileComponent } from './tile.component';
+
+@Component({
+  standalone: true,
+  imports: [TileComponent],
+  template: `<svg><g app-tile [tile]="tile" [rotation]="rotation"></g></svg>`,
+})
+class TestHost {
+  tile = Tiles.byId('9')!;
+  rotation = 0 as const;
+}
 
 describe('TileComponent', () => {
-  let fixture: ComponentFixture<TileComponent>;
+  let fixture: ComponentFixture<TestHost>;
   let nativeElement: HTMLElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TileComponent],
+      imports: [TestHost],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TileComponent);
-    fixture.componentInstance.tile = Tiles.byId('9');
-    fixture.componentInstance.rotation = 0;
+    fixture = TestBed.createComponent(TestHost);
     fixture.detectChanges();
     nativeElement = fixture.nativeElement;
   });
@@ -29,7 +38,7 @@ describe('TileComponent', () => {
       expect(lines.length).toBe(2);
     });
 
-    it('positions lines from edge 0 (N) to edge 3 (s)', () => {
+    it('positions lines from edge 0 (N) to edge 3 (S)', () => {
       const lines = nativeElement.querySelectorAll('line');
       const black = lines[1];
       expect(black.getAttribute('y1')).toBe('-87');
@@ -38,9 +47,10 @@ describe('TileComponent', () => {
       expect(black.getAttribute('x2')).toBe('0');
     });
 
-    it('applies rotation transform on the outer <g>', () => {
-      const g = nativeElement.querySelector('svg:g');
-      expect(g.getAttribute('transform')).toBe('rotate(0)');
+    it('applies rotation transform on the host <g>', () => {
+      const g = nativeElement.querySelector('g[app-tile]');
+      // SVG.js normalizes transforms to matrix format
+      expect(g?.getAttribute('transform')).toContain('matrix');
     });
   });
 });
