@@ -1,4 +1,4 @@
-import type { CityStop, Path } from '../types/map-types.js';
+import type { TileStop, Path } from '../types/map-types.js';
 
 export type TileColor = 'yellow' | 'green' | 'brown' | 'gray';
 
@@ -8,7 +8,7 @@ export interface TileDef {
   id: string;
   color: TileColor;
   quantity: number;
-  cities: CityStop[];
+  stops: TileStop[];
   paths: Path[];
   label?: 'B' | 'OO' | 'DC';
 }

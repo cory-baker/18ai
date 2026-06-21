@@ -1,5 +1,5 @@
 import type { AxialHex, EdgeId } from '../coords/types.js';
-import type { CityStop, Path, PathEnd } from '../types/map-types.js';
+import type { TileStop, Path } from '../types/map-types.js';
 
 export const HEX_RADIUS = 100;
 export const HEX_HEIGHT = HEX_RADIUS * Math.sqrt(3); // https://www.redblobgames.com/grids/hexagons/#spacing
@@ -38,20 +38,23 @@ export function edgeMidpoint(edge: EdgeId): PixelPoint {
   return EDGE_MIDPOINTS[edge];
 }
 
-export function cityCenter(_stop: CityStop): PixelPoint {
+export function cityCenter(_stop: TileStop): PixelPoint {
   return { x: 0, y: 0 };
 }
 
-export function resolvePathEnd(end: PathEnd, cities: readonly CityStop[]): PixelPoint {
-  if (end.kind === 'edge') {
-    return edgeMidpoint(end.edge);
-  }
-  const stop = cities.find((c) => c.id === end.stopId);
+export function stopCenter(stopIndex: number, stops: readonly TileStop[]): PixelPoint {
+  const stop = stops.find((s) => s.indexOnTile === stopIndex);
   return stop ? cityCenter(stop) : { x: 0, y: 0 };
 }
 
-export function segmentForPath(path: Path, cities: readonly CityStop[]): Segment {
-  const from = resolvePathEnd(path.from, cities);
-  const to = resolvePathEnd(path.to, cities);
-  return { x1: from.x, y1: from.y, x2: to.x, y2: to.y };
+export function segmentForPath(path: Path, stops: readonly TileStop[]): Segment {
+  if (path.kind === 'edge-to-edge') {
+    const from = edgeMidpoint(path.edgeA);
+    const to = edgeMidpoint(path.edgeB);
+    return { x1: from.x, y1: from.y, x2: to.x, y2: to.y };
+  }
+  // path.kind === 'edge-to-stop'
+  const edgePt = edgeMidpoint(path.edge);
+  const stopPt = stopCenter(path.stopIndex, stops);
+  return { x1: edgePt.x, y1: edgePt.y, x2: stopPt.x, y2: stopPt.y };
 }

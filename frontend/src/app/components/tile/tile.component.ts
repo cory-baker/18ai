@@ -36,6 +36,6 @@ export class TileComponent implements OnChanges {
   }
 
   private getSegments(): Segment[] {
-    return this.tile.paths.map((path) => segmentForPath(path, this.tile.cities));
+    return this.tile.paths.map((path) => segmentForPath(path, this.tile.stops));
   }
 }

@@ -42,17 +42,28 @@ export type HexSlot = OpenHexSlot | CityHexSlot | TownHexSlot | OffboardHexSlot 
 /** Map manifest row: same as `HexSlot` but axial coords are filled at load from `id`. */
 export type HexSlotWithoutCoords = HexSlot extends infer H ? (H extends HexSlot ? Omit<H, 'q' | 'r'> : never) : never;
 
-export interface CityStop {
-  id: number;
+export interface TileStop {
+  indexOnTile: number;
   kind: 'city' | 'town';
-  slots: number;
+  /** `0` = town (no markers). */
+  stationMarkerCapacity: number;
+  /** Base revenue value; phase-dependent off-board revenue uses a separate table. */
   revenue: number;
 }
 
-/** Track segment between two endpoints; `from`/`to` order is not semantically significant. */
-export interface Path {
-  from: PathEnd;
-  to: PathEnd;
+/** Track connecting two hex edges. */
+export interface EdgeToEdgePath {
+  kind: 'edge-to-edge';
+  edgeA: EdgeId;
+  edgeB: EdgeId;
 }
 
-export type PathEnd = { kind: 'edge'; edge: EdgeId } | { kind: 'stop'; stopId: number };
+/** Track connecting a hex edge to a city/town stop. */
+export interface EdgeToStopPath {
+  kind: 'edge-to-stop';
+  edge: EdgeId;
+  stopIndex: number;
+}
+
+/** Track segment on a tile; discriminated by `kind`. */
+export type Path = EdgeToEdgePath | EdgeToStopPath;
