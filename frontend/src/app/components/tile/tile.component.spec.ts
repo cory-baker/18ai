@@ -33,7 +33,7 @@ describe('TileComponent', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  describe('for tile #9', () => {
+  describe('For a simple N -> S tile with no stops', () => {
     it('renders two <line> elements for a single-path tile (black line/white outline)', () => {
       const lines = nativeElement.querySelectorAll('line');
       expect(lines.length).toBe(2);
@@ -55,7 +55,7 @@ describe('TileComponent', () => {
     });
   });
 
-  describe('for tile #57 (single city)', () => {
+  describe('For a tile with a single city stop', () => {
     beforeEach(() => {
       fixture.componentRef.setInput('tile', Tiles.byId('57')!);
       fixture.detectChanges();
@@ -64,6 +64,13 @@ describe('TileComponent', () => {
     it('renders a circle for the city stop', () => {
       const circles = nativeElement.querySelectorAll('circle');
       expect(circles.length).toBe(1);
+    });
+
+    describe('For a tile with a revenue badge', () => {
+      it('renders revenue text', () => {
+        const g = nativeElement.querySelector('g[app-tile]');
+        expect(g.textContent).includes('20');
+      });
     });
   });
 });

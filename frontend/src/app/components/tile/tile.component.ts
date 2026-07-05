@@ -28,7 +28,7 @@ export class TileComponent implements OnChanges {
     }
   }
 
-  private renderPathSegments(group: G) {
+  private renderPaths(group: G) {
     for (const segment of this.getSegments()) {
       group
         .line(segment.x1, segment.y1, segment.x2, segment.y2)
@@ -38,6 +38,13 @@ export class TileComponent implements OnChanges {
     }
   }
 
+  private renderRevenue(group: G) {
+    this.tile.stops.forEach((stop) => {
+      if (stop.kind === 'city' && stop.revenue > 0) {
+      }
+    });
+  }
+
   private render(): void {
     const group = new G(this.host.nativeElement);
     group.clear();
@@ -45,7 +52,7 @@ export class TileComponent implements OnChanges {
     // Set rotation around origin (0, 0) to avoid getBBox() call in tests
     group.transform({ rotate: this.rotation * 60, origin: [0, 0] });
 
-    this.renderPathSegments(group);
+    this.renderPaths(group);
     this.renderStops(group);
   }
 

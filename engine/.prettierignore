@@ -1,3 +1,5 @@
 node_modules
 dist
 coverage
+src/data/tile-catalog-seed.ts
+src/data/map-manifest-seed.ts
