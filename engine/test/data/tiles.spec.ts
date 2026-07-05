@@ -9,7 +9,7 @@ describe('data/tiles catalog', () => {
     expect(t!.quantity).toBe(-1);
     expect(t!.paths.length).toBeGreaterThanOrEqual(1);
   });
-
+  
   it('looks up tiles by id', () => {
     expect(Tiles.byId('missing')).toBeUndefined();
   });

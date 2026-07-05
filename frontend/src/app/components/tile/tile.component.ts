@@ -1,4 +1,4 @@
-import { Rotation, Segment, segmentForPath, TileDef } from '@18ai/engine';
+import { cityCenter, Rotation, Segment, segmentForPath, TileDef } from '@18ai/engine';
 import { Component, ElementRef, Input, OnChanges, inject } from '@angular/core';
 import { G } from '@svgdotjs/svg.js';
 
@@ -19,13 +19,16 @@ export class TileComponent implements OnChanges {
     this.render();
   }
 
-  private render(): void {
-    const group = new G(this.host.nativeElement);
-    group.clear();
+  private renderStops(group: G) {
+    for (const stop of this.tile.stops) {
+      if (stop.kind === 'city') {
+        const { x, y } = cityCenter(stop);
+        group.circle(40).attr({ cx: x, cy: y }).fill('white').stroke({ color: 'black', width: 3 });
+      }
+    }
+  }
 
-    // Set rotation around origin (0, 0) to avoid getBBox() call in tests
-    group.transform({ rotate: this.rotation * 60, origin: [0, 0] });
-
+  private renderPathSegments(group: G) {
     for (const segment of this.getSegments()) {
       group
         .line(segment.x1, segment.y1, segment.x2, segment.y2)
@@ -33,6 +36,17 @@ export class TileComponent implements OnChanges {
 
       group.line(segment.x1, segment.y1, segment.x2, segment.y2).stroke({ color: 'black', width: 9, linecap: 'round' });
     }
+  }
+
+  private render(): void {
+    const group = new G(this.host.nativeElement);
+    group.clear();
+
+    // Set rotation around origin (0, 0) to avoid getBBox() call in tests
+    group.transform({ rotate: this.rotation * 60, origin: [0, 0] });
+
+    this.renderPathSegments(group);
+    this.renderStops(group);
   }
 
   private getSegments(): Segment[] {

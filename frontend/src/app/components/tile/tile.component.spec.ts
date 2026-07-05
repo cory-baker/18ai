@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { Tiles } from '@18ai/engine';
 import { TileComponent } from './tile.component';
+import type { TileDef, Rotation } from '@18ai/engine';
 
 @Component({
   standalone: true,
@@ -10,8 +11,8 @@ import { TileComponent } from './tile.component';
   template: `<svg><g app-tile [tile]="tile" [rotation]="rotation"></g></svg>`,
 })
 class TestHost {
-  tile = Tiles.byId('9')!;
-  rotation = 0 as const;
+  @Input() tile: TileDef = Tiles.byId('9')!;
+  @Input() rotation: Rotation = 0;
 }
 
 describe('TileComponent', () => {
@@ -51,6 +52,18 @@ describe('TileComponent', () => {
       const g = nativeElement.querySelector('g[app-tile]');
       // SVG.js normalizes transforms to matrix format
       expect(g?.getAttribute('transform')).toContain('matrix');
+    });
+  });
+
+  describe('for tile #57 (single city)', () => {
+    beforeEach(() => {
+      fixture.componentRef.setInput('tile', Tiles.byId('57')!);
+      fixture.detectChanges();
+    });
+
+    it('renders a circle for the city stop', () => {
+      const circles = nativeElement.querySelectorAll('circle');
+      expect(circles.length).toBe(1);
     });
   });
 });
