@@ -1,4 +1,4 @@
 {
-  "jestrunner.vitestCommand": "node ../scripts/test-runner.js",
+  "jestrunner.vitestCommand": "node ../.vscode/test-runner.js",
   "jestrunner.changeDirectoryToWorkspaceRoot": true
 }
